@@ -1,0 +1,264 @@
+<html>
+<head>
+<title>Добавление viz-pom в account_auths вашего аккаунта Viz</title>
+<meta charset="utf-8" />
+<style>
+
+input {
+    border: 2px solid #efefef;
+    width: 80%;
+	height: 40px;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 5px 0;
+    border-radius: 5px;
+    color: #3d3d3d;
+	
+}
+
+input:focus{
+outline: 2px solid lightgreen;
+}
+
+button {
+    margin: 15px auto;
+    background: #007b40;
+    border: 0;
+    padding: 5px 20px;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px -4px grey;
+    font-size: 1.2rem;
+    cursor: pointer;
+	outline: none;
+}
+
+#delbut {
+    margin: 15px auto;
+    background: #7b2400;
+    border: 0;
+    padding: 5px 20px;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px -4px grey;
+    font-size: 1.2rem;
+    cursor: pointer;
+	outline: none;
+}
+
+#divi{
+width: 80%;
+margin: auto;
+border-radius: 5px;
+border: 1px dashed grey;
+}
+
+#inf{
+background: #fffce2;
+margin: auto;
+padding: 15px 10px;
+font-size: 1.2rem;
+font-family: arial;
+width: 80%;
+}
+
+#delinf{
+background: #ffe2e4;
+margin: auto;
+padding: 15px 10px;
+font-size: 1.2rem;
+font-family: arial;
+width: 80%;
+}
+
+a{
+text-decoration: none;
+color: #4e7c13;
+}
+
+a:hover{
+color: #8e5c23;
+}
+</style>
+<script src="./viz.min.js"></script>
+</head>
+<body>
+<br>
+<div id="divi">
+<p><center>
+<p id="inf">С помощью данной формы вы можете добавить viz-pom в account_auths вашего viz-аккаунта.<br><br>Больше информации можно получить в telegram-группе проекта Viz-Pom - <a href="https://t.me/pomviz">https://t.me/pomviz</a></p><br><br>
+<input type="text" name="user" id="user" placeholder="Ваш Viz логин"> <br><br>
+<input type="password" name="actt" id="actt" role="password" placeholder="Активный ключ"><br>
+<a class="reg"><button>🤝 Добавить</button></a></center></p>
+<p id="info"></p>
+</div>
+<br><br>
+
+<div id="divi">
+<p><center>
+<p id="delinf">С помощью данной формы вы можете удалить viz-pom из account_auths вашего viz-аккаунта.</p><br><br>
+<input type="text" name="duser" id="duser" placeholder="Ваш Viz логин"> <br><br>
+<input type="password" name="dactt" id="dactt" role="password" placeholder="Активный ключ"><br>
+<a class="del"><button id="delbut">🤝 Удалить</button></a></center></p>
+<p id="infos"></p>
+</div>
+
+<script>
+viz.config.set('websocket','https://rpc.viz.lexai.host/'); 
+viz.config.set('address_prefix','VIZ');
+viz.config.set('chain_id','2040effda178d4fffff5eab7a915d4019879f5205cc5392e4bcced2b6edda0cd');
+
+
+var start = document.querySelector("a.reg");
+start.addEventListener("click", function( event ) {
+
+
+document.getElementById('info').innerHTML = "<center>⏱</center>";
+  
+var user = document.getElementById("user").value;
+var oww = document.getElementById("actt").value;
+
+viz.api.getAccounts([user], function(err, response){
+					
+					if(err){
+						
+					console.log('Ошибка при поиске аккаунта')
+											
+					}else{
+					
+					var authority = ['viz-pom',1];
+					
+					var posting = response[0].posting.key_auths;
+					var memo = response[0].memo_key;
+					var jsonMetadata = response[0].json_metadata;
+					
+					var aposting = response[0].posting.account_auths;
+					
+					
+					console.log(posting,memo);
+					
+					aposting.push(authority);
+					
+
+var uposting = {
+  weight_threshold: 1,
+  account_auths: aposting,
+  key_auths: posting
+};
+
+var umemoKey = memo;
+
+viz.broadcast.accountUpdate(oww, user, undefined, undefined, uposting,umemoKey, jsonMetadata, function(err, result)
+{
+	if (!err)
+	{
+		console.log('done');
+		document.getElementById('info').innerHTML = "<center>✅</center>";
+	} else {
+		console.log('Error accountUpdate: ');
+		console.log(err);
+		document.getElementById('info').innerHTML = "<center>❌</center>";
+	}
+});
+					
+					
+					
+					
+					}
+					
+					});
+
+
+});
+
+//del
+
+var dell = document.querySelector("a.del");
+dell.addEventListener("click", function( event ) {
+
+
+document.getElementById('infos').innerHTML = "<center>⏱</center>";
+  
+var user = document.getElementById("duser").value;
+var oww = document.getElementById("dactt").value;
+
+viz.api.getAccounts([user], function(err, response){
+					
+					if(err){
+						
+					console.log('Ошибка при поиске аккаунта')
+											
+					}else{
+					
+					
+					var posting = response[0].posting.key_auths;
+					var memo = response[0].memo_key;
+					var jsonMetadata = response[0].json_metadata;
+					
+					var authh = response[0].posting.account_auths;
+					
+	var i = 0;
+  	var vizp = 'viz-pom';
+  
+     function srch (){
+		let str ='0';
+		for(let u = 0; u < authh.length; u++) { 
+			if( authh[u][0] === vizp){
+				str='1'; 
+				i = u;
+				break;
+			} else str='0';
+		}
+	return str;
+	};	
+
+	var src = srch();
+	
+	if(src === '0'){
+	
+	
+	document.getElementById('infos').innerHTML = "<center>viz-pom не найден в account_auth</center>";
+	
+	}else{
+	
+	authh.splice(i, 1);
+	
+	
+					console.log(posting,memo);
+					
+
+var uposting = {
+  weight_threshold: 1,
+  account_auths: authh,
+  key_auths: posting
+};
+
+var umemoKey = memo;
+
+viz.broadcast.accountUpdate(oww, user, undefined, undefined, uposting,umemoKey, jsonMetadata, function(err, result)
+{
+	if (!err)
+	{
+		console.log('done');
+		document.getElementById('infos').innerHTML = "<center>viz-pom удален из account_auth</center>";
+	} else {
+		console.log('Error accountUpdate: ');
+		console.log(err);
+		document.getElementById('infos').innerHTML = "<center>❌</center>";
+	}
+});
+					
+					
+					}
+					
+					}
+					
+					});
+
+
+});
+
+</script>
+
+</body>
+</html>

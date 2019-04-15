@@ -80,7 +80,7 @@ a:hover{
 color: #8e5c23;
 }
 </style>
-<script src="./viz.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/viz-js-lib@latest/dist/viz.min.js"></script>
 </head>
 <body>
 <br>
@@ -128,11 +128,11 @@ viz.api.getAccounts([user], function(err, response){
 					
 					var authority = ['viz-pom',1];
 					
-					var posting = response[0].posting.key_auths;
+					var posting = response[0].regular_authority.key_auths;
 					var memo = response[0].memo_key;
 					var jsonMetadata = response[0].json_metadata;
 					
-					var aposting = response[0].posting.account_auths;
+					var aposting = response[0].regular_authority.account_auths;
 					
 					
 					console.log(posting,memo);
@@ -191,11 +191,11 @@ viz.api.getAccounts([user], function(err, response){
 					}else{
 					
 					
-					var posting = response[0].posting.key_auths;
+					var posting = response[0].regular_authority.key_auths;
 					var memo = response[0].memo_key;
 					var jsonMetadata = response[0].json_metadata;
 					
-					var authh = response[0].posting.account_auths;
+					var authh = response[0].regular_authority.account_auths;
 					
 	var i = 0;
   	var vizp = 'viz-pom';

@@ -4,13 +4,18 @@
 <meta charset="utf-8" />
 <style>
 
+body{
+
+   
+}
+
 input {
-    border: 2px solid #efefef;
-    width: 80%;
+    border: 2px solid #d8d8d8;
+    width: 40%;
 	height: 40px;
     font-weight: 700;
     font-size: 1rem;
-    padding: 5px 0;
+    padding: 5px 5px;
     border-radius: 5px;
     color: #3d3d3d;
 	
@@ -26,7 +31,7 @@ button {
     border: 0;
     padding: 5px 20px;
     color: white;
-    border-radius: 15px;
+    border-radius: 3px;
     box-shadow: 0 0 20px -4px grey;
     font-size: 1.2rem;
     cursor: pointer;
@@ -39,7 +44,7 @@ button {
     border: 0;
     padding: 5px 20px;
     color: white;
-    border-radius: 15px;
+    border-radius: 3px;
     box-shadow: 0 0 20px -4px grey;
     font-size: 1.2rem;
     cursor: pointer;
@@ -53,11 +58,24 @@ border-radius: 5px;
 border: 1px dashed grey;
 }
 
+#dr {
+width: 80%;
+margin: auto;
+padding-bottom: 35px;
+font-size: 1.05rem;
+font-family: arial;
+}
+
+#dr img{
+width: 150px;
+height: 67px;
+}
+
 #inf{
 background: #fffce2;
 margin: auto;
 padding: 15px 10px;
-font-size: 1.2rem;
+font-size: 1.1rem;
 font-family: arial;
 width: 80%;
 }
@@ -84,11 +102,12 @@ color: #8e5c23;
 </head>
 <body>
 <br>
+<div id="dr"><img src="./img/lg.png"></div>
 <div id="divi">
 <p><center>
-<p id="inf">С помощью данной формы вы можете добавить viz-pom в account_auths вашего viz-аккаунта.<br><br>Больше информации можно получить в telegram-группе проекта Viz-Pom - <a href="https://t.me/pomviz">https://t.me/pomviz</a></p><br><br>
-<input type="text" name="user" id="user" placeholder="Ваш Viz логин"> <br><br>
-<input type="password" name="actt" id="actt" role="password" placeholder="Активный ключ"><br>
+<p id="inf">С помощью данной формы вы можете добавить viz-pom в account_auths вашего viz-аккаунта.</p><br>
+<input type="text" name="user" id="user" placeholder="Ваш Viz логин"> &nbsp;&nbsp;
+<input type="password" name="actt" id="actt" role="password" placeholder="Активный ключ"><br><br>
 <a class="reg"><button>🤝 Добавить</button></a></center></p>
 <p id="info"></p>
 </div>
@@ -96,13 +115,13 @@ color: #8e5c23;
 
 <div id="divi">
 <p><center>
-<p id="delinf">С помощью данной формы вы можете удалить viz-pom из account_auths вашего viz-аккаунта.</p><br><br>
-<input type="text" name="duser" id="duser" placeholder="Ваш Viz логин"> <br><br>
-<input type="password" name="dactt" id="dactt" role="password" placeholder="Активный ключ"><br>
+<p id="delinf">С помощью данной формы вы можете удалить viz-pom из account_auths вашего viz-аккаунта.</p><br>
+<input type="text" name="duser" id="duser" placeholder="Ваш Viz логин"> &nbsp;&nbsp;
+<input type="password" name="dactt" id="dactt" role="password" placeholder="Активный ключ"><br><br>
 <a class="del"><button id="delbut">🤝 Удалить</button></a></center></p>
 <p id="infos"></p>
-</div>
-
+</div><br><br>
+<div id="dr"><p><center>Больше информации можно получить в telegram-группе проекта Viz-Pom - <a href="https://t.me/pomviz">https://t.me/pomviz</a></center></p></div>
 <script>
 viz.config.set('websocket','https://rpc.viz.lexai.host/'); 
 viz.config.set('address_prefix','VIZ');

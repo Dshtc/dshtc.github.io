@@ -2,91 +2,92 @@
 <head>
 <title>Добавление viz-pom в account_auths вашего аккаунта Viz</title>
 <meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Source+Sans+Pro" rel="stylesheet">
 <style>
-
 body{
-
-   
+font-family: 'Source Sans Pro', sans-serif;
+background: url(./img/bg2.png);
+background-size: 100%; 
 }
 
 input {
-    border: 2px solid #d8d8d8;
-    width: 40%;
-	height: 40px;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 5px 5px;
-    border-radius: 5px;
-    color: #3d3d3d;
-	
+border: 2px solid #bcbcbc;
+width: 80%;
+height: 40px;
+font-weight: 600;
+font-size: 0.9rem;
+padding: 5px 15px;
+border-radius: 5px;
+color: #3d3d3d;
+margin: 5px 10px;
 }
 
 input:focus{
-outline: 2px solid lightgreen;
+outline: 2px solid lightblue;
 }
 
 button {
-    margin: 15px auto;
-    background: #007b40;
-    border: 0;
-    padding: 5px 20px;
-    color: white;
-    border-radius: 3px;
-    box-shadow: 0 0 20px -4px grey;
-    font-size: 1.2rem;
-    cursor: pointer;
-	outline: none;
+margin: 10px 10px;
+background: #16bc40;
+border: 0;
+padding: 10px 20px;
+color: white;
+font-weight: bold;
+font-family: 'Comfortaa', cursive;
+text-transform:uppercase;
+font-size: 1 rem;
+cursor: pointer;
+outline: none;
+}
+
+button:hover{
+box-shadow: 0px 5px 20px -12px rgba(0,0,0,0.7);
+background: #18cc45;
 }
 
 #delbut {
-    margin: 15px auto;
-    background: #7b2400;
-    border: 0;
-    padding: 5px 20px;
-    color: white;
-    border-radius: 3px;
-    box-shadow: 0 0 20px -4px grey;
-    font-size: 1.2rem;
-    cursor: pointer;
-	outline: none;
+text-transform:uppercase;
+margin: 10px 10px;
+background: #d82735;
+border: 0;
+color: white;    
+font-size: 1 rem;
+cursor: pointer;
+outline: none;
+}
+
+#delbut:hover{
+box-shadow: 0px 5px 20px -12px rgba(0,0,0,0.7);
+background: #d81e2d;
 }
 
 #divi{
+background: white;
 width: 80%;
 margin: auto;
-border-radius: 5px;
-border: 1px dashed grey;
+display: table;
+border: 1px solid #eaeaea;
+box-shadow: 0px 5px 20px -12px rgba(0,0,0,0.4);
 }
 
 #dr {
 width: 80%;
 margin: auto;
-padding-bottom: 35px;
+padding-bottom: 50px;
 font-size: 1.05rem;
-font-family: arial;
 }
 
 #dr img{
-width: 150px;
-height: 67px;
+width: 120px;
+height: 54px;
+float:left;
 }
 
-#inf{
-background: #fffce2;
-margin: auto;
-padding: 15px 10px;
-font-size: 1.1rem;
-font-family: arial;
-width: 80%;
-}
 
-#delinf{
-background: #ffe2e4;
-margin: auto;
-padding: 15px 10px;
-font-size: 1.2rem;
-font-family: arial;
-width: 80%;
+
+#info{
+width: 100%
+display: table-row;
 }
 
 a{
@@ -97,31 +98,63 @@ color: #4e7c13;
 a:hover{
 color: #8e5c23;
 }
+
+.form{
+border-left: 1px dashed #e0e0e0;
+text-align: center;
+padding: 20px 0px;
+width: 55%;
+background: #f2f2f2;
+display: table-cell;
+}
+
+.infs{
+width: 45%;
+padding: 0px 25px;
+display: table-cell;
+text-align: center;
+vertical-align: middle;
+font-size: 1.25rem;
+font-weight: bold;
+color: #222222;
+}
+
+#footer {
+width: 80%;
+margin: auto;
+padding-bottom: 35px;
+font-size: 1.05rem;
+}
+
+#footer img{
+width: 40px;
+height: 40px;
+float: right;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/viz-js-lib@latest/dist/viz.min.js"></script>
 </head>
 <body>
 <br>
-<div id="dr"><img src="./img/lg.png"></div>
-<div id="divi">
-<p><center>
-<p id="inf">С помощью данной формы вы можете добавить viz-pom в account_auths вашего viz-аккаунта.</p><br>
-<input type="text" name="user" id="user" placeholder="Ваш Viz логин"> &nbsp;&nbsp;
-<input type="password" name="actt" id="actt" role="password" placeholder="Активный ключ"><br><br>
-<a class="reg"><button>🤝 Добавить</button></a></center></p>
-<p id="info"></p>
-</div>
-<br><br>
+
+<div id="dr"><img src="./lg.png"> <p id="inf"></p></div><br><br>
 
 <div id="divi">
-<p><center>
-<p id="delinf">С помощью данной формы вы можете удалить viz-pom из account_auths вашего viz-аккаунта.</p><br>
-<input type="text" name="duser" id="duser" placeholder="Ваш Viz логин"> &nbsp;&nbsp;
-<input type="password" name="dactt" id="dactt" role="password" placeholder="Активный ключ"><br><br>
-<a class="del"><button id="delbut">🤝 Удалить</button></a></center></p>
-<p id="infos"></p>
-</div><br><br>
-<div id="dr"><p><center>Больше информации можно получить в telegram-группе проекта Viz-Pom - <a href="https://t.me/pomviz">https://t.me/pomviz</a></center></p></div>
+<div class="infs"><p>С помощью данной формы вы можете дать или забрать право аккаунту viz-pom совершать награды от вашего viz-аккаунта.</p></div>
+<div class="form">
+
+<input type="text" name="user" id="user" placeholder="Ваш Viz логин"><br> 
+<input type="password" name="actt" id="actt" role="password" placeholder="Активный ключ"><br><br>
+<a class="reg"><button>Добавить</button></a><a class="del"><button id="delbut">Удалить</button></a>
+<p id="info"></p>
+
+</div>
+
+</div>
+
+<br><br>
+
+<div id="footer"><p><center><a href="https://t.me/pomviz"><img src="./img/tg.png" title="Больше информации можно получить в telegram-группе проекта Viz-Pom https://t.me/pomviz "></a></center></p></div>
 <script>
 viz.config.set('websocket','https://rpc.viz.lexai.host/'); 
 viz.config.set('address_prefix','VIZ');
@@ -139,7 +172,7 @@ var oww = document.getElementById("actt").value;
 
 viz.api.getAccounts([user], function(err, response){
 					
-					if(err){
+			if(err){
 						
 					console.log('Ошибка при поиске аккаунта')
 											
@@ -152,7 +185,6 @@ viz.api.getAccounts([user], function(err, response){
 					var jsonMetadata = response[0].json_metadata;
 					
 					var aposting = response[0].regular_authority.account_auths;
-					
 					
 					console.log(posting,memo);
 					
@@ -179,15 +211,8 @@ viz.broadcast.accountUpdate(oww, user, undefined, undefined, uposting,umemoKey, 
 		document.getElementById('info').innerHTML = "<center>❌</center>";
 	}
 });
-					
-					
-					
-					
-					}
-					
-					});
-
-
+}
+});
 });
 
 //del
@@ -196,10 +221,10 @@ var dell = document.querySelector("a.del");
 dell.addEventListener("click", function( event ) {
 
 
-document.getElementById('infos').innerHTML = "<center>⏱</center>";
+document.getElementById('info').innerHTML = "<center>⏱</center>";
   
-var user = document.getElementById("duser").value;
-var oww = document.getElementById("dactt").value;
+var user = document.getElementById("user").value;
+var oww = document.getElementById("actt").value;
 
 viz.api.getAccounts([user], function(err, response){
 					
@@ -208,7 +233,6 @@ viz.api.getAccounts([user], function(err, response){
 					console.log('Ошибка при поиске аккаунта')
 											
 					}else{
-					
 					
 					var posting = response[0].regular_authority.key_auths;
 					var memo = response[0].memo_key;
@@ -235,16 +259,13 @@ viz.api.getAccounts([user], function(err, response){
 	
 	if(src === '0'){
 	
-	
-	document.getElementById('infos').innerHTML = "<center>viz-pom не найден в account_auth</center>";
+	document.getElementById('info').innerHTML = "<center>viz-pom не найден в account_auth</center>";
 	
 	}else{
 	
 	authh.splice(i, 1);
 	
-	
-					console.log(posting,memo);
-					
+console.log(posting,memo);
 
 var uposting = {
   weight_threshold: 1,
@@ -259,22 +280,16 @@ viz.broadcast.accountUpdate(oww, user, undefined, undefined, uposting,umemoKey, 
 	if (!err)
 	{
 		console.log('done');
-		document.getElementById('infos').innerHTML = "<center>viz-pom удален из account_auth</center>";
+		document.getElementById('info').innerHTML = "<center>viz-pom удален из account_auth</center>";
 	} else {
 		console.log('Error accountUpdate: ');
 		console.log(err);
-		document.getElementById('infos').innerHTML = "<center>❌</center>";
+		document.getElementById('info').innerHTML = "<center>❌</center>";
 	}
 });
-					
-					
-					}
-					
-					}
-					
-					});
-
-
+}
+}
+});
 });
 
 </script>
